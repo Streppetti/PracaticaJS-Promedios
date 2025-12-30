@@ -18,21 +18,28 @@ Hacer un algoritmo de promedios
 
 
     Variables 
-    - Cantidad de Notas
-    - Nota Indidual (n1, n2, n3, ... nK) 
+    - Cantidad de Notas [Condiciones: Tipo Number]
+    - Nota Indidual (n1, n2, n3, ... nK) [Condiciones: Tipo Number, Igual o menor a 10]
     - La suma de las notas
     - Promedio Final
 */
 
-let cantNotas = Number(prompt("¿Cuantas notas vas a promediar?"));
-let sumaNotas = 0;
+let cantNotas = Number(prompt("¿Cuantas notas vas a promediar?")); // Tipo Number
+let sumaNotas = 0; // Limpiamos la lista
 
-for (let i = 0; i < cantNotas; i++) {
-  let nota = Number(prompt(`Ingrese Nota: ${i + 1}`));
-  if (nota > 0) {
-    sumaNotas = sumaNotas + nota;
-  }
+if (!isNaN(cantNotas) && cantNotas > 0){ // Solamente tipo Number y que el dato ingresado sea mayor a 0
+    for (let i = 0; i < cantNotas; i++) {
+        let nota = Number(prompt(`Ingrese Nota (Del 1 al 10): ${i + 1}`));
+        if (nota > 0 && nota <= 10) {
+        sumaNotas = sumaNotas + nota;
+        }
+        else{
+            alert("Nota no valida, refresque la página")
+        }
+    }
+    let promedioNotas = sumaNotas / cantNotas;
+    alert(`El promedio es: ${promedioNotas}`);
 }
-
-let promedioNotas = sumaNotas / cantNotas;
-alert(`El promedio es: ${promedioNotas}`);
+else{
+    alert("Nota no valida, refresque la página")
+}
